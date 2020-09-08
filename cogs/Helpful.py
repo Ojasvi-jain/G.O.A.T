@@ -24,6 +24,15 @@ class Helpful(commands.Cog):
 
         await ctx.send(embed=embed)
 
+    @commands.command()
+    async def avatar(self, ctx, member: discord.Member):
+        show_avatar = discord.Embed(
+
+            colour=discord.Colour.teal()
+        )
+        show_avatar.set_image(url='{}'.format(member.avatar_url))
+        await ctx.send(embed=show_avatar)
+
 
 def setup(bot):
     bot.add_cog(Helpful(bot))
