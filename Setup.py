@@ -16,7 +16,6 @@ def start():
     client.load_extension("cogs.Fun")
     client.load_extension("cogs.Mod_Commands")
     client.load_extension("cogs.Helpful")
-
     print("Cogs loaded successfully")
     client.run(token)
 
