@@ -25,6 +25,15 @@ class Fun(commands.Cog):
         await ctx.send(f"This is a peaceful server ☮ we don't want any kind of bs in here,\n \
 If u are willing to fight go to either Dm's or in channel <#753067495686144123> \n Thank You for your corporation ✌")
 
+    @commands.command()
+    async def say(self, ctx, member: discord.Member, *, msg="U suck"):
+        """
+       Make webhooks which imitate actual person.
+        """
+        webhook = await ctx.channel.create_webhook(name="su")
+        await webhook.send(content=msg, username=member.name, avatar_url=member.avatar_url)
+        await webhook.delete()
+
 
 def setup(bot):
     bot.add_cog(Fun(bot))
