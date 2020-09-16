@@ -33,6 +33,21 @@ class Mod(commands.Cog):
 
         await ctx.send(embed=embed)
 
+    # troll
+    @commands.command()
+    async def muteall(self, ctx):
+        await ctx.send(f"{ctx.author.mention} has muted everyone!")
 
+    # troll
+    @commands.command()
+    async def unmuteall(self, ctx):
+        await ctx.send(f"{ctx.author.mention} has unmuted everyone!")
+
+    # unmute someone
+    @commands.command()
+    async def unmute(self, ctx, user: discord.Member):
+        # await user.remove_roles(discord.utils.get(ctx.guild.roles, name="Muted")) # removes muted role
+        await ctx.send(f"{user.mention} has been un-muted")
+        await ctx.send(f"Sike, you thought {ctx.author.mention}")
 def setup(bot):
     bot.add_cog(Mod(bot))
