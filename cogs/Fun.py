@@ -1,6 +1,6 @@
 import discord
 from discord.ext import commands
-from random import randint
+import random
 from discord.utils import get
 import time
 from datetime import datetime
@@ -33,6 +33,19 @@ If u are willing to fight go to either Dm's or in channel <#753067495686144123> 
         webhook = await ctx.channel.create_webhook(name="su")
         await webhook.send(content=msg, username=member.name, avatar_url=member.avatar_url)
         await webhook.delete()
+
+    @commands.command()
+    async def smoke(self, ctx):
+        embed = discord.Embed(
+            colour=discord.Colour(0x006400),
+            title='SmokerOP',
+            description='You smoked too much weed with Murtuza, and **you fell on roof While dancing!**'
+        )
+
+        embed.set_image(url="https://media.giphy.com/media/Tglfor5oAY4icwI5X2/giphy.gif")
+        embed.set_footer(text="Made with Smoke! | Don't Smoke Weed ⚰ everyday")
+
+        await ctx.send(embed=embed)
 
 
 def setup(bot):
