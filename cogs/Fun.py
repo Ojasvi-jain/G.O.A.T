@@ -47,6 +47,20 @@ If u are willing to fight go to either Dm's or in channel <#753067495686144123> 
 
         await ctx.send(embed=embed)
 
+    @commands.command()
+    async def how_bs(self, ctx, member: discord.Member):
+        embed = discord.Embed(
+            colour=discord.Colour(0x006400),
+            title='Bs_OP)',
+            description=f'{member.mention}You shit too much as much as {random.randint(32, 100)}%'
+        )
+
+        embed.set_image(
+            url="https://media0.giphy.com/media/RLhfkGgyyJR3ran5qt/giphy.gif?cid=ecf05e47t4oou0f9sohat6002altrnmwjz432zzpd63ji33p&rid=giphy.gif")
+        embed.set_footer(text='Made with Shit! | SHIT Weed **everyday**')
+
+        await ctx.send(embed=embed)
+
 
 def setup(bot):
     bot.add_cog(Fun(bot))
