@@ -1,6 +1,5 @@
 import discord
 from discord.ext import commands
-from random import randint
 from discord.utils import get
 import time
 from datetime import datetime
@@ -49,5 +48,13 @@ class Mod(commands.Cog):
         # await user.remove_roles(discord.utils.get(ctx.guild.roles, name="Muted")) # removes muted role
         await ctx.send(f"{user.mention} has been un-muted")
         await ctx.send(f"Sike, you thought {ctx.author.mention}")
+
+    @commands.has_permissions(manage_messages=True)
+    @commands.command()
+    async def clear(self, ctx, amount=5):
+        """clears chat"""
+        await ctx.channel.purge(limit=amount)
+
+
 def setup(bot):
     bot.add_cog(Mod(bot))
