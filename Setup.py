@@ -7,7 +7,7 @@ client.remove_command('help')
 
 
 def start():
-    cogs = ["cogs.Events", "cogs.Helpful", "cogs.Mod_Commands", "cogs.Fun"]
+    cogs = ["cogs.Helpful", "cogs.Mod_Commands", "cogs.Events", "cogs.Fun"]
     print("Initialize the cogs loading process")
     for i in cogs:
         client.load_extension(i)
