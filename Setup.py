@@ -1,14 +1,8 @@
-import discord
-from discord.ext import commands
-from random import randint
-from discord.utils import get
-import time
-from datetime import datetime
-import asyncio
 import os
+from discord.ext import commands
 
 client = commands.Bot(command_prefix=">", case_insensitive=True)
-token = os.getenv('DISCORD_TOKEN')
+token = os.environ['DISCORD_TOKEN']
 client.remove_command('help')
 
 
