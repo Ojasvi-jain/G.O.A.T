@@ -1,1 +1,1 @@
-
+worker: python Setup.py
