@@ -1,9 +1,5 @@
 import discord
 from discord.ext import commands
-from discord.utils import get
-import time
-from datetime import datetime
-import asyncio
 
 
 class Mod(commands.Cog):
@@ -54,6 +50,17 @@ class Mod(commands.Cog):
     async def clear(self, ctx, amount=5):
         """clears chat"""
         await ctx.channel.purge(limit=amount)
+
+    @commands.command()
+    @commands.has_permissions(kick_members=True)
+    async def kick(self, ctx, member: discord.Member, *, reason="No Reason!"):
+        await ctx.send(f'Nice try {ctx.author.mention}!')
+
+        if member == None or member == ctx.message.author:
+            await ctx.channel.send("You cannot kick yourself!")
+            return
+        await member.kick(reason=reason)
+        await ctx.send(f'Kicked {member}!')
 
 
 def setup(bot):
