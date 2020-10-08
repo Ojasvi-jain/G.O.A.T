@@ -73,7 +73,7 @@ class Mod(commands.Cog):
             url="https://lever-client-logos.s3-us-west-2.amazonaws.com/2034f09a-3588-4411-8f4a-26e0da70d11a-1590002495817.png")
         embed.add_field(name="🏓 Ping ", value=str(f"Pong! **{round(self.bot.latency * 1000)} ms**."), inline=False)
         embed.add_field(name="👍 Uptime",
-                        value=str(time.strftime("%H:%M:%S", time.gmtime(current_uptime))) + "s", inline=False)
+                        value=str(time.strftime("%H: %M: %S", time.gmtime(current_uptime))) + "s", inline=False)
         await ctx.send(embed=embed)
 
 
