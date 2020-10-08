@@ -19,8 +19,8 @@ def start():
     print("Cogs loaded successfully \n")
     print('Active in these guilds/servers:')
     [print(g.name) for g in client.guilds]
-    print('\n G.O.A.T started successfully', end="-------------------- \n")
+    print('\n G.O.A.T started successfully', end="\n ------------------------------- \n")
     client.run(token)
 
 
-print('G.O.A.T has terminated')
+start()
