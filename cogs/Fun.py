@@ -1,10 +1,6 @@
 import discord
 from discord.ext import commands
 import random
-from discord.utils import get
-import time
-from datetime import datetime
-import asyncio
 
 
 class Fun(commands.Cog):
@@ -23,7 +19,7 @@ class Fun(commands.Cog):
     @commands.command()
     async def no_bs(self, ctx):
         await ctx.send(f"This is a peaceful server ☮ we don't want any kind of bs in here,\n \
-If u are willing to fight go to either Dm's or in channel <#753067495686144123> \n Thank You for your corporation ✌")
+If u are willing to fight go to either Dm's or in channel <#753485967314387064> \n Thank You for your corporation ✌")
 
     @commands.command()
     async def say(self, ctx, member: discord.Member, *, msg="U suck"):
@@ -61,6 +57,17 @@ If u are willing to fight go to either Dm's or in channel <#753067495686144123> 
 
         await ctx.send(embed=embed)
 
+    @commands.command()
+    async def how_gai(self, ctx, member: discord.Member):
+        embed = discord.Embed(
+            colour=discord.Colour(0x006400),
+            title='Gai_OP)',
+            description=f'{member.mention}You are only {random.randint(33, 200)}% Gai'
+        )
+        embed.set_image(url="https://media.giphy.com/media/mIwRwDz23fxAc/giphy.gif")
+        embed.set_footer(text='')
+
+        await ctx.send(embed=embed)
 
 def setup(bot):
     bot.add_cog(Fun(bot))

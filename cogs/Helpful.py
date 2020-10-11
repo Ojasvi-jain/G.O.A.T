@@ -1,10 +1,6 @@
+import datetime
 import discord
 from discord.ext import commands
-from random import randint
-from discord.utils import get
-import time
-from datetime import datetime
-import asyncio
 
 
 class Helpful(commands.Cog):
@@ -13,7 +9,7 @@ class Helpful(commands.Cog):
 
     @commands.command()
     async def role_info(self, ctx, role: discord.Role) -> None:
-        """this fuction returns the names of all the member with that role."""
+        """this function returns the names of all the member with that role."""
         embed = discord.Embed(
             title=f"List of people with the role {role.name}:[Total members with the role:[{len(role.members)}]"
             , color=role.color)
@@ -29,8 +25,19 @@ class Helpful(commands.Cog):
         show_avatar = discord.Embed(
             colour=discord.Colour.teal()
         )
-        show_avatar.set_image(url='{}' .format(member.avatar_url))
+        show_avatar.set_image(url='{}'.format(member.avatar_url))
         await ctx.send(embed=show_avatar)
+
+    @commands.command()
+    async def reminder(self, ctx, time, *args):
+        await ctx.send(f"Hello Bruh u are shit \n {time} :{' '.join(args)}")
+        await ctx.send(f"{datetime.time()}")
+
+    @commands.command()
+    async def send_dm(self, ctx, member: discord.Member, *, content):
+        channel = await member.create_dm()
+
+        await channel.send(content)
 
 
 def setup(bot):
