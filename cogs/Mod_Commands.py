@@ -1,12 +1,10 @@
 import discord
 from discord.ext import commands
-import time
 
 
 class Mod(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        self.initial_time = time.monotonic()
 
     @commands.command()
     async def help(self, ctx):
@@ -63,18 +61,6 @@ class Mod(commands.Cog):
             return
         await member.kick(reason=reason)
         await ctx.send(f'Kicked {member}!')
-
-    @commands.command()
-    async def ping(self, ctx):
-        current_uptime = round(time.monotonic() - self.initial_time, 2)
-        embed = discord.Embed(
-            title="G.O.A.T", description="Ping Details", color=0xc41c1c)
-        embed.set_thumbnail(
-            url="https://lever-client-logos.s3-us-west-2.amazonaws.com/2034f09a-3588-4411-8f4a-26e0da70d11a-1590002495817.png")
-        embed.add_field(name="🏓 Ping ", value=str(f"Pong! **{round(self.bot.latency * 1000)} ms**."), inline=False)
-        embed.add_field(name="👍 Uptime",
-                        value=str(time.strftime("%H:%M:%S", time.gmtime(current_uptime))) + "s", inline=False)
-        await ctx.send(embed=embed)
 
 
 def setup(bot):
