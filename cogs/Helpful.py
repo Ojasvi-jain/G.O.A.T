@@ -31,7 +31,8 @@ class Helpful(commands.Cog):
     @commands.command()
     async def send_dm(self, ctx, member: discord.Member, *content):
         channel = await member.create_dm()
-        await channel.send(f"{content} \n I Know it never gets old getting messages from a bot ;)")
+        await channel.send(f"{' '.join(content)} \n ----------------------------  \n " 
+                           f"Getting a message from bot never gets old;)")
 
 
 def setup(bot):
