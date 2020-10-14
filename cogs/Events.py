@@ -36,6 +36,7 @@ class events(commands.Cog):
 
             await message.channel.send(embed=embed)
 
+    @commands.Cog.listener()
     async def on_member_join(self, member):
         channel = member.guild.system_channel
         if channel is not None:
@@ -56,9 +57,24 @@ class events(commands.Cog):
         if hasattr(ctx.command, 'on_error'):
             return
 
+        # This prevents any cogs with an overwritten cog_command_error being handled here.
+        cog = ctx.cog
+        if cog:
+            if cog._get_overridden_method(cog.cog_command_error) is not None:
+                return
+        # Allows us to check for original exceptions raised and sent to CommandInvokeError.
+        # If nothing is found. We keep the exception passed to on_command_error.
+        error = getattr(error, 'original', error)
+
+        if isinstance(error, commands.CommandNotFound):
+            await ctx.send("Wake up there is no such command ")
+
+        elif isinstance(error, commands.BadArgument):
+            await ctx.send('I could not find that member. Please try again.')
+
         else:
-            # All other Errors not returned come here. And we can just print the default TraceBack.
-            print('Ignoring exception in command {}:'.format(ctx.command))
+            # All other Errors    not returned come here. And we can just print the default TraceBack.
+            print(f"Ignoring exception in command {ctx.command}: ")
 
 
 def setup(bot):
