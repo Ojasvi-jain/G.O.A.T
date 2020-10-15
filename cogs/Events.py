@@ -66,7 +66,16 @@ class events(commands.Cog):
         elif isinstance(error, commands.DisabledCommand):
             await ctx.send(f'{ctx.command} has been disabled.')
 
-        
+        elif isinstance(error, commands.MemberNotFound):
+            await ctx.send("I could not find that member. Please try again.")
+
+        elif isinstance(error, commands.NoPrivateMessage):
+            try:
+                await ctx.author.send(f'{ctx.command} can not be used in Private Messages.')
+            except discord.HTTPException:
+                pass
+
+        # For this error example we check to see where it came from...
         elif isinstance(error, commands.BadArgument):
             await ctx.send('I could not find that member. Please try again.')
 
