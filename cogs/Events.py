@@ -13,28 +13,19 @@ class events(commands.Cog):
 
     @commands.Cog.listener()
     async def on_message(self, message):
-        if message.author == self.bot: return
         message.content = message.content.lower()
-        if message.content == "<@!738742637993132032>":
-            embed = discord.Embed(
-                colour=discord.Colour.teal(),
-                description='The prefix of **G.O.A.T.** is \'>\''
+        if message.author == self.bot:
+            return
 
-            )
+        elif self.bot.user.mentioned_in(message):
+            await message.channel.send("You can type `>help ` for more info")
 
-            embed.set_author(name='G.O.A.T. - Help',
-                             icon_url='https://images-ext-2.discordapp.net/external/EszvAdMvtYOBEfXWbl1e2l5Vwwm3-D3uJmxRzCR38e8/%3Fsize%3D128/https/cdn.discordapp.com/icons/730302270058659950/9f7b054607cd8e9d0371be308a59699a.png')
-            embed.add_field(name='Utilities :tools:',
-                            value='`>help` `>ping` `>dm` `>send_dm` `>avatar` `>smoke` `>random` `>creator` `>codingame` `>krunker` `>typeracer`',
-                            inline=False)
-            embed.add_field(name='Moderator :oncoming_police_car:',
-                            value='`>kick (disabled)` `>ban (disabled)` `>unban` `>mute` `>unmute` `>autorole` `>clear`',
-                            inline=False)
-            embed.add_field(name='Fun :confetti_ball:',
-                            value='`>Junayed` `>Sahil` `>Murtuza` `>Tahsina` `>Itash` `>Arian` `>Faiyaz` `>Murtuza` `>Ojasvi`',
-                            inline=False)
-
-            await message.channel.send(embed=embed)
+        if message.guild is None and not message.author.bot:
+            if message.author == "Oj#6955":
+                channel = self.bot.get_channel(765861714817843221)
+            # if the channel is public at all, make sure to sanitize this first
+                await channel.send(message.content)
+        await self.bot.process_commands(message)
 
     @commands.Cog.listener()
     async def on_member_join(self, member):
@@ -69,6 +60,13 @@ class events(commands.Cog):
         if isinstance(error, commands.CommandNotFound):
             await ctx.send("Wake up there is no such command ")
 
+        elif isinstance(error, commands.MissingPermissions):
+            await ctx.send(" :rofl: U don't have the Perms to execute the command")
+
+        elif isinstance(error, commands.DisabledCommand):
+            await ctx.send(f'{ctx.command} has been disabled.')
+
+        
         elif isinstance(error, commands.BadArgument):
             await ctx.send('I could not find that member. Please try again.')
 
