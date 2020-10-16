@@ -21,10 +21,8 @@ class events(commands.Cog):
             await message.channel.send("You can type `>help ` for more info")
 
         if message.guild is None and not message.author.bot:
-            if message.author == "Oj#6955":
-                channel = self.bot.get_channel(765861714817843221)
-            # if the channel is public at all, make sure to sanitize this first
-                await channel.send(message.content)
+            channel = self.bot.get_channel(765861714817843221)
+            await channel.send(message.content)
         await self.bot.process_commands(message)
 
     @commands.Cog.listener()
@@ -35,7 +33,8 @@ class events(commands.Cog):
 
     @commands.Cog.listener()
     async def on_command_error(self, ctx, error):
-        """The event triggered when an error is raised while invoking a command.
+        """
+        The event triggered when an error is raised while invoking a command.
         Parameters
         ------------
         ctx: commands.Context
@@ -43,7 +42,6 @@ class events(commands.Cog):
         error: commands.CommandError
             The Exception raised.
         """
-
         # This prevents any commands with local handlers being handled here in on_command_error.
         if hasattr(ctx.command, 'on_error'):
             return
