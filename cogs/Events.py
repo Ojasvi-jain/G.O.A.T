@@ -23,7 +23,6 @@ class events(commands.Cog):
         if message.guild is None and not message.author.bot:
             channel = self.bot.get_channel(765861714817843221)
             await channel.send(message.content)
-        await self.bot.process_commands(message)
 
     @commands.Cog.listener()
     async def on_member_join(self, member):
