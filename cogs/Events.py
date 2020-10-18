@@ -22,7 +22,7 @@ class events(commands.Cog):
 
         if message.guild is None and not message.author.bot:
             channel = self.bot.get_channel(765861714817843221)
-            await channel.send(message.content)
+            await channel.send(f"Author: {message.author} \nReply: {message.content} \n----------------")
 
     @commands.Cog.listener()
     async def on_member_join(self, member):
@@ -46,7 +46,7 @@ class events(commands.Cog):
             return
 
         # This prevents any cogs with an overwritten cog_command_error being handled here.
-        cog = ctx.cog
+        cog = ctx.cog 
         if cog:
             if cog._get_overridden_method(cog.cog_command_error) is not None:
                 return
