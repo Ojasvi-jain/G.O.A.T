@@ -14,15 +14,15 @@ class events(commands.Cog):
     @commands.Cog.listener()
     async def on_message(self, message):
         message.content = message.content.lower()
-        if message.author == self.bot:
-            return
+        if message.author.bot:
+            return None
+        else:
+            if message.content == "<@!765457803673337876>":
+                await message.channel.send("Type `>help ` for more info")
 
-        elif self.bot.user.mentioned_in(message):
-            await message.channel.send("You can type `>help ` for more info")
-
-        if message.guild is None and not message.author.bot:
-            channel = self.bot.get_channel(765861714817843221)
-            await channel.send(f"Author: {message.author} \nReply: {message.content} \n----------------")
+            if message.guild is None and not message.author.bot:
+                channel = self.bot.get_channel(765861714817843221)
+                await channel.send(f"Author: ``{message.author}`` \nReply: ``{message.content}`` \n----------------")
 
     @commands.Cog.listener()
     async def on_member_join(self, member):
