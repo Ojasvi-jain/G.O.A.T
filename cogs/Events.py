@@ -8,7 +8,7 @@ class events(commands.Cog):
 
     @commands.Cog.listener()
     async def on_ready(self):
-        await self.bot.change_presence(activity=discord.Activity(type=discord.ActivityType.custom, name="Life"),
+        await self.bot.change_presence(activity=discord.Activity(type=discord.ActivityType.competing, name="Life"),
                                        status="Online")
 
     @commands.Cog.listener()
@@ -23,7 +23,7 @@ class events(commands.Cog):
             if message.guild is None and not message.author.bot:
                 channel = self.bot.get_channel(765861714817843221)
                 await channel.send(f"Author: ``{message.author}`` \nReply: ``{message.content}`` \n----------------")
-
+ 
     @commands.Cog.listener()
     async def on_member_join(self, member):
         channel = member.guild.system_channel
