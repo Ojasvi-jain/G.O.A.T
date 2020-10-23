@@ -24,9 +24,6 @@ class Mod(commands.Cog):
         embed.add_field(name='Moderator :oncoming_police_car:',
                         value='`>kick (disabled)` `>ban (disabled)` `>unban` `>mute` `>unmute` `>autorole` `>clear`',
                         inline=False)
-        embed.add_field(name='Fun :confetti_ball:',
-                        value='`>Junayed` `>Sahil` `>Murtuza` `>Tahsina` `>Itash` `>Arian` `>Faiyaz` `>Murtuza` `>Ojasvi`',
-                        inline=False)
 
         await ctx.send(embed=embed)
 
@@ -51,14 +48,14 @@ class Mod(commands.Cog):
     @commands.command()
     async def clear(self, ctx, amount=5):
         """clears chat"""
-        await ctx.channel.purge(limit=amount)
+        await ctx.channel.purge(limit=amount + 1)
 
     @commands.command()
     @commands.has_permissions(kick_members=True)
     async def kick(self, ctx, member: discord.Member, *, reason="No Reason!"):
         await ctx.send(f'Nice try {ctx.author.mention}!')
 
-        if member == None or member == ctx.message.author:
+        if member is None or member == ctx.message.author:
             await ctx.channel.send("You cannot kick yourself!")
             return
         await member.kick(reason=reason)
