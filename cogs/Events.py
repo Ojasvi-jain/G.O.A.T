@@ -8,7 +8,7 @@ class events(commands.Cog):
 
     @commands.Cog.listener()
     async def on_ready(self):
-        await self.bot.change_presence(activity=discord.Activity(type=discord.ActivityType.competing, name="Life"),
+        await self.bot.change_presence(activity=discord.Activity(type=discord.ActivityType.playing, name="Life"),
                                        status="Online")
 
     @commands.Cog.listener()
@@ -20,10 +20,15 @@ class events(commands.Cog):
             if message.content == "<@!765457803673337876>":
                 await message.channel.send("Type `>help ` for more info")
 
+            if '😂' in message.content:
+                print("Pollution ")
+                await message.channel.purge(limit = 1)
+                await message.channel.send(f"U ruined Peace in server by using :joy: Emoji \n{message.author} In your Message: `{message.content}`")
+
             if message.guild is None and not message.author.bot:
                 channel = self.bot.get_channel(765861714817843221)
                 await channel.send(f"Author: ``{message.author}`` \nReply: ``{message.content}`` \n----------------")
- 
+
     @commands.Cog.listener()
     async def on_member_join(self, member):
         channel = member.guild.system_channel
@@ -46,7 +51,7 @@ class events(commands.Cog):
             return
 
         # This prevents any cogs with an overwritten cog_command_error being handled here.
-        cog = ctx.cog 
+        cog = ctx.cog
         if cog:
             if cog._get_overridden_method(cog.cog_command_error) is not None:
                 return
