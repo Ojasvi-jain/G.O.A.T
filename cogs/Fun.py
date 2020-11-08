@@ -1,10 +1,6 @@
 import discord
 from discord.ext import commands
 import random
-from discord.utils import get
-import time
-from datetime import datetime
-import asyncio
 
 
 class Fun(commands.Cog):
@@ -39,7 +35,7 @@ If u are willing to fight go to either Dm's or in channel <#753067495686144123> 
         embed = discord.Embed(
             colour=discord.Colour(0x006400),
             title='SmokerOP',
-            description='You smoked too much weed with Murtuza, and **you fell on roof While dancing!**'
+            description="You smoked too much weed and **you fell of roof While dancing!**"
         )
 
         embed.set_image(url="https://media.giphy.com/media/Tglfor5oAY4icwI5X2/giphy.gif")
@@ -52,12 +48,23 @@ If u are willing to fight go to either Dm's or in channel <#753067495686144123> 
         embed = discord.Embed(
             colour=discord.Colour(0x006400),
             title='Bs_OP)',
-            description=f'{member.mention}You shit too much as much as {random.randint(32, 100)}%'
+            description=f'{member.mention}You shit as much as {random.randint(32, 100)}%'
         )
 
         embed.set_image(
             url="https://media0.giphy.com/media/RLhfkGgyyJR3ran5qt/giphy.gif?cid=ecf05e47t4oou0f9sohat6002altrnmwjz432zzpd63ji33p&rid=giphy.gif")
         embed.set_footer(text='Made with Shit! | SHIT Weed **everyday**')
+
+        await ctx.send(embed=embed)
+
+    @commands.command()
+    async def roast_him(self, ctx, member: discord.Member):
+        await ctx.send("Get Rekt")
+        with open("D:/G.O.A.T/cogs/Roasts.txt", "r", encoding="utf-8") as lines:
+            # lines now has a list of each line
+            text = random.choice(lines.readlines())
+        await ctx.send(f"{member.mention}, {text}")
+
 
         await ctx.send(embed=embed)
 
