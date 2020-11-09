@@ -60,7 +60,7 @@ If u are willing to fight go to either Dm's or in channel <#753067495686144123> 
     @commands.command()
     async def roast_him(self, ctx, member: discord.Member):
         await ctx.send("Get Rekt")
-        with open("D:/G.O.A.T/cogs/Roasts.txt", "r", encoding="utf-8") as lines:
+        with open("cogs/Roasts.txt", "r", encoding="utf-8") as lines:
             # lines now has a list of each line
             text = random.choice(lines.readlines())
         await ctx.send(f"{member.mention}, {text}")
