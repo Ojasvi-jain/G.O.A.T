@@ -22,8 +22,9 @@ class events(commands.Cog):
 
             if '😂' in message.content:
                 print("Pollution ")
-                await message.channel.purge(limit = 1)
-                await message.channel.send(f"{message.author} ruined Peace in server by using :joy: Emoji \nIn Message: `{message.content}`")
+                await message.channel.purge(limit=1)
+                await message.channel.send(
+                    f"{message.author.mention} ruined Peace in server by using :joy: Emoji \nIn Message: `{message.content}`")
 
             if message.guild is None and not message.author.bot:
                 channel = self.bot.get_channel(765861714817843221)
