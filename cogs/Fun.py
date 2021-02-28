@@ -19,10 +19,11 @@ class Fun(commands.Cog):
     @commands.command()
     async def no_bs(self, ctx):
         await ctx.send(f"This is a peaceful server ☮ we don't want any kind of bs in here,\n \
-If u are willing to fight go to either Dm's or in channel <#753067495686144123> \n Thank You for your corporation ✌")
+        If u are willing to fight go to either Dm's or in channel <#753067495686144123> \n \
+        Thank You for your corporation ✌")
 
     @commands.command()
-    async def say(self, ctx, member: discord.Member, *, msg="U suck"):
+    async def say(self, ctx, member: discord.Member, *, msg="Hola"):
         """
        Make webhooks which imitate actual person.
         """
@@ -64,6 +65,7 @@ If u are willing to fight go to either Dm's or in channel <#753067495686144123> 
             # lines now has a list of each line
             text = random.choice(lines.readlines())
         await ctx.send(f"{member.mention}, {text}")
+
 
 def setup(bot):
     bot.add_cog(Fun(bot))
