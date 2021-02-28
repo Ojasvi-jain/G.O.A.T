@@ -65,18 +65,5 @@ If u are willing to fight go to either Dm's or in channel <#753067495686144123> 
             text = random.choice(lines.readlines())
         await ctx.send(f"{member.mention}, {text}")
 
-    @commands.command()
-    async def how_gai(self, ctx, member: discord.Member):
-        embed = discord.Embed(
-            colour=discord.Colour(0x006400),
-            title='Gai_OP)',
-            description=f'{member.mention}You are only {random.randint(33, 200)}% Gai'
-        )
-        embed.set_image(url="https://media.giphy.com/media/mIwRwDz23fxAc/giphy.gif")
-        embed.set_footer(text='')
-
-        await ctx.send(embed=embed)
-
-
 def setup(bot):
     bot.add_cog(Fun(bot))
