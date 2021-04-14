@@ -8,7 +8,7 @@ class events(commands.Cog):
 
     @commands.Cog.listener()
     async def on_ready(self):
-        await self.bot.change_presence(activity=discord.Activity(type=discord.ActivityType.playing, name="Life"),
+        await self.bot.change_presence(activity=discord.Activity(type=discord.ActivityType.playing, name="Dumb"),
                                        status="Online")
 
     @commands.Cog.listener()
