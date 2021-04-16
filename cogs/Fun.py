@@ -59,7 +59,7 @@ class Fun(commands.Cog):
         await ctx.send(embed=embed)
 
     @commands.command()
-    async def roast_him(self, ctx, member: discord.Member):
+    async def roast(self, ctx, member: discord.Member):
         await ctx.send("Get Rekt")
         with open("cogs/Roasts.txt", "r", encoding="utf-8") as lines:
             # lines now has a list of each line
