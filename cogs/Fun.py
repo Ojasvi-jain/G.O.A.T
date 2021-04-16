@@ -14,12 +14,12 @@ class Fun(commands.Cog):
         await ctx.channel.purge(limit=1)
         for i in range(int(amount)):
             await (ctx.send(f"--__-- :rofl: {member.mention}, {content}"))
-        print("Just spammed people!lol")
+        print("Just spammed more people!lol")
 
     @commands.command()
     async def no_bs(self, ctx):
         await ctx.send(f"This is a peaceful server ☮ we don't want any kind of bs in here,\n \
-        If u are willing to fight go to either Dm's or in channel <#753067495686144123> \n \
+        If u are willing to fight go to Dms \n \
         Thank You for your corporation ✌")
 
     @commands.command()
@@ -60,7 +60,7 @@ class Fun(commands.Cog):
 
     @commands.command()
     async def roast(self, ctx, member: discord.Member):
-        await ctx.send("Get Rekt")
+        await ctx.send("GET REKT 😎")
         with open("cogs/Roasts.txt", "r", encoding="utf-8") as lines:
             # lines now has a list of each line
             text = random.choice(lines.readlines())
